@@ -1,11 +1,11 @@
 /*
 import * as React from 'react'
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { SHA256 } from 'crypto-js';
 */
 
-const { useEffect, useMemo, useState } = React;
+const { useEffect, useState } = React;
 const SHA256 = CryptoJS.SHA256;
 
 const URL = "https://script.google.com/macros/s/AKfycbyr2Rl3KQlEfGwQhoM2hj6xYqRLqyFKPdYdhNm52lyuYW08lkUyxyT0L4kAAqv3SIuqQg/exec"
@@ -33,19 +33,9 @@ function StudyCafeReservation() {
     };
 
     const [now, setNow] = useState(getSeoulNow());
-    const closingTime = useMemo(() => {
-    const d = getSeoulNow();
-    d.setHours(18, 20, 0, 0); // 18:20 고정
-    return d;
-    }, [now]);
+    const closingTime = getSeoulNow().setHours(18, 20, 0, 0); // 18:20 고정
     const msUntilClose = Math.max(0, closingTime - now);
-
-    const openingTime = useMemo(() => {
-    const d = getSeoulNow();
-    d.setHours(13, 20, 0, 0); // 13:20 고정
-    if (msUntilClose===0) d.setDate(d.getDate() + 1);
-    return d;
-    }, [now]);
+    const openingTime = getSeoulNow().setHours(13, 20, 0, 0) + (msUntilClose===0?86400000:0); // 13:20 고정
     const msUntilOpen = Math.max(0, openingTime - now);
 
     const isOpen = (msUntilOpen === 0 && msUntilClose !== 0);
