@@ -1,6 +1,6 @@
 # reserve
 
-충곽 스카 1.7
+충곽 스카 1.10
 
 ## guide
 
@@ -19,7 +19,7 @@ main 브랜치는 인터넷에 게시되지 않고, dist 브랜치가 게시됩�
     npx @tailwindcss/cli -i src/style.css -o dist/style.css
     ```
 
-5. src/index.js로 가서, 맨 위의 import문들의 주석을 풀고, 그 밑의 두 줄(useState 등등과 SHA256의 정의)을 주석으로 만든 뒤 거의 맨 아래의 ReactDOM.createRoot에서 "ReactDOM."을 지웁니다.
+5. src/index.js로 가서, 맨 위의 import문들의 주석을 풀고, 그 아래 문단을 지운 뒤, 거의 맨 아래의 ReactDOM.createRoot에서 "ReactDOM."을 지웁니다.
 6. 여전히 _for_dist 폴더에서, 다음 커맨드를 실행합니다.
 
     ```zsh
@@ -28,7 +28,7 @@ main 브랜치는 인터넷에 게시되지 않고, dist 브랜치가 게시됩�
 
 7. 브랜치를 dist로 바꿉니다. 만약 _for_dist 폴더를 다른 곳에 붙여넣지 않고, 원래 있던 곳에서 작업하고 있었다면, 이 작업은 이때까지 했던 모든 것을 없앨 것입니다. 브랜치를 바꾸기 전에 지금까지 작업한 _for_dist 폴더를 다른 곳으로 옮겨야 합니다.
 8. 원래 있던 index.html, style.css, main.js를 지우고, src 폴더의 index.html과, dist 폴더의 style.css와 main.js를 붙여넣습니다.
-9. index.html에서, `<script src="index.js">`의 `src`를 `main.js`로 바꾸고, `<head>` 안에 있는 `<script>` 태그를 지웁니다. 이때, `<!-- JQuery + Google login -->`의 주석이 달려 있는 `<script>` 태그는 지우면 안 됩니다.
+9. index.html에서, `<script type="text/babel" src="index.js">`를 `<script src="main.js">`로 바꾸고, `<head>` 안에 있는 `<script>` 태그를 지웁니다. 이때, `<!-- JQuery + Google login -->`의 주석이 달려 있는 `<script>` 태그는 지우면 안 됩니다.
 10. 커밋 메시지를 `distribution version (버전)`으로 하고 커밋합니다. 이는 필수는 아니나, 일관성을 위해 이렇게 하시기 바랍니다. 큰 변경사항이 있었다면 메이저 버전을 하나 올리고(e.g. 0.3 -> 1), 큰 변경사항이 없었다면 마이너 버전을 하나 올립니다(e.g. 1 -> 1.1, 1.3 -> 1.4).
 
 만약 어떠한 이유로 위 작업이 불가능하다면, qpi-ipret에게 문의해 웹사이트 게시 브랜치를 dist에서 main으로 바꾼 뒤 그냥 main을 사용하시기 바랍니다.
