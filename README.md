@@ -12,24 +12,18 @@ main 브랜치는 인터넷에 게시되지 않고, dist 브랜치가 게시됩�
 
 1. main 브랜치의 _for_dist 폴더를 복사해, 다른 곳에 붙여넣습니다.
 2. 해당 폴더 아래의 src 폴더에 index.html, style.css, index.js를 붙여넣습니다.
-3. npm이 아직 설치가 안 돼 있으면 설치합니다.
-4. _for_dist 폴더로 cd한 뒤, 다음 커맨드를 실행합니다.
+3. src/index.js로 가서, 맨 위의 import문들의 주석을 풀고, `const { useEffect, useState } = React;`를 지운 뒤, 거의 맨 아래의 ReactDOM.createRoot에서 "ReactDOM."을 지웁니다.
+4. npm이 아직 설치가 안 돼 있으면 설치합니다.
+5. 여전히 _for_dist 폴더에서, 다음 커맨드를 실행합니다.
 
     ```zsh
-    npx @tailwindcss/cli -i src/style.css -o dist/style.css
+    npm run build
     ```
 
-5. src/index.js로 가서, 맨 위의 import문들의 주석을 풀고, 그 아래 문단을 지운 뒤, 거의 맨 아래의 ReactDOM.createRoot에서 "ReactDOM."을 지웁니다.
-6. 여전히 _for_dist 폴더에서, 다음 커맨드를 실행합니다.
-
-    ```zsh
-    npx webpack
-    ```
-
-7. 브랜치를 dist로 바꿉니다. 만약 _for_dist 폴더를 다른 곳에 붙여넣지 않고, 원래 있던 곳에서 작업하고 있었다면, 이 작업은 이때까지 했던 모든 것을 없앨 것입니다. 브랜치를 바꾸기 전에 지금까지 작업한 _for_dist 폴더를 다른 곳으로 옮겨야 합니다.
-8. 원래 있던 index.html, style.css, main.js를 지우고, src 폴더의 index.html과, dist 폴더의 style.css와 main.js를 붙여넣습니다.
-9. index.html에서, `<script type="text/babel" src="index.js">`를 `<script src="main.js">`로 바꾸고, `<head>` 안에 있는 `<script>` 태그를 지웁니다. 이때, `<!-- JQuery + Google login -->`의 주석이 달려 있는 `<script>` 태그는 지우면 안 됩니다.
-10. 커밋 메시지를 `distribution version (버전)`으로 하고 커밋합니다. 이는 필수는 아니나, 일관성을 위해 이렇게 하시기 바랍니다. 큰 변경사항이 있었다면 메이저 버전을 하나 올리고(e.g. 0.3 -> 1), 큰 변경사항이 없었다면 마이너 버전을 하나 올립니다(e.g. 1 -> 1.1, 1.3 -> 1.4).
+6. 브랜치를 dist로 바꿉니다. 만약 _for_dist 폴더를 다른 곳에 붙여넣지 않고, 원래 있던 곳에서 작업하고 있었다면, 이 작업은 이때까지 했던 모든 것을 없앨 것입니다. 브랜치를 바꾸기 전에 지금까지 작업한 _for_dist 폴더를 다른 곳으로 옮겨야 합니다.
+7. 원래 있던 index.html, style.css, main.js를 지우고, src 폴더의 index.html과, dist 폴더의 style.css와 index.js를 붙여넣습니다.
+8. index.html에서, `<script type="text/babel" src="index.js">`에서 `type="text/babel"`을 지우고, `<head>` 안에서 지우라고 적혀 있는 부분을 지웁니다.
+9. 커밋 메시지를 `distribution version (버전)`으로 하고 커밋합니다. 이는 필수는 아니나, 일관성을 위해 이렇게 하시기 바랍니다. 큰 변경사항이 있었다면 메이저 버전을 하나 올리고(e.g. 0.3 -> 1), 큰 변경사항이 없었다면 마이너 버전을 하나 올립니다(e.g. 1 -> 1.1, 1.3 -> 1.4).
 
 만약 어떠한 이유로 위 작업이 불가능하다면, qpi-ipret에게 문의해 웹사이트 게시 브랜치를 dist에서 main으로 바꾼 뒤 그냥 main을 사용하시기 바랍니다.
 
@@ -335,21 +329,28 @@ SOFTWARE.
 ```
 
 ```text
-CryptoJS
-(c) 2012 by Cédric Mesnil. All rights reserved.
+A tiny SHA256 implementation (https://github.com/6502/sha256/tree/main)
 
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+Copyright 2022 Andrea Griffini
 
-    - Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-    - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
 
-----------------
-
-Counter block mode compatible with  Dr Brian Gladman fileenc.c
-derived from CryptoJS.mode.CTR
-Jan Hruby jhruby.web@gmail.com
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
 <!-- <br> <br> patafim -->
