@@ -1,9 +1,3 @@
-/*
-import React, { useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import "./style.css"
-*/
-
 const { useEffect, useState } = React;
 
 // JS에는 해시를 구할 수 있는 crypto.subtle.digest라는 내장 함수가 있으나, async이다. JS에서는 async를 다시 sync로 돌리는 방법이 없다.
